@@ -46,6 +46,10 @@ module.exports = {
       },
       editorials_id: {
         type: Sequelize.INTEGER,
+        references : {
+          model : 'Editorials',
+          key: 'id',
+        }
       },
       states_id: {
         type: Sequelize.INTEGER,
