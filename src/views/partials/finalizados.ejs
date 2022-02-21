@@ -1,13 +1,14 @@
-<% finalizados.forEach(element => { %>
+<% for( let i =0; i < products.length; i++ ) { %>
     <article>
-    <a href="/products/productDetail/<%= element.id %> "><img src="images/products/<%= element.img %> " alt="portada<%= element.nombre %> "></a>
+    <a href="/products/productDetail/<%= products[i].id %> "><img src="images/products/<%= products[i].images[i].name %> " alt="portada<%= products.name %> "></a>
     <div class="main-product">
         
-        <h3><%= element.nombre %> <i class="fas fa-book"></i></h3>
-        <p>$<%= element.precio %> </p>
+        <h3><%= products[i].name%> <i class="fas fa-book"></i></h3>
+        <p>$<%= products[i].price %> </p>
         <form action="/views/home.html" method="POST">
         <input type="submit" class="btn3" value="Agregar al carrito">
         </form>
     </div>
 </article>
-<% }) %>
+<% } %>
+

@@ -7,10 +7,11 @@ const jerarquiaMiddleware = require('../middleware/jerarquiaMiddleware')
 
 router.get('/cart', productController.cart);
 
-router.get('/productDetail/:id', productController.detail);
+router.get('/detailProduct/:id', productController.detail);
 
-router.get('/agregarProducto', jerarquiaMiddleware, productController.create);
-router.post('/agregarProducto', upload.single("portada"), productController.store);
+router.get('/createProduct', jerarquiaMiddleware, productController.create);
+
+router.post('/storeProduct', upload.single("portada"), productController.store);
 
 router.get('/edit/:id', jerarquiaMiddleware ,productController.edit)
 

@@ -29,14 +29,32 @@
             <h2>NOVEDADES</h2>
             <section class="Productos-relacionados contenedor-grid">
 
-            <%- include('../partials/finalizados') %>
+                <% for( let i =0; i < products.length; i++ ) { %>
+                    <article>
+                    <a href="/products/productDetail/<%= products[i].id %> ">
+                        <% for( let j = 0; j < products[i].images.length; j++ ) { %>
+                            <img src="images/products/<%= products[i].images[j].name %> " alt="portada<%= products[i].name %> ">
+                        <% } %>
+                       
+                    </a>
+                    <div class="main-product">
+                        
+                        <h3><%= products[i].name%> <i class="fas fa-book"></i></h3>
+                        <p>$<%= products[i].price %> </p>
+                        <form action="/views/home.html" method="POST">
+                        <input type="submit" class="btn3" value="Agregar al carrito">
+                        </form>
+                    </div>
+                </article>
+                <% } %>
+                
 
             </section>
 
             <h2>OFERTAS</h2>
             <section class="Productos-relacionados contenedor-grid">
                 
-                <%-include('../partials/enEmision') %> 
+                
 
             </section>     
             

@@ -1,12 +1,15 @@
-const jsonDB = require('../model/jsonDatabase');
-const productModel = jsonDB('products')
+let db = require('../database/models');
 const mainController = {
-    index : (req,res)=>{
-
-        const finalizados = productModel.findAllByField("Finalizado")
-        const enEmision = productModel.findAllByField("En Curso")
+    index :(req,res)=>{
         
-        res.render('products/index', {finalizados, enEmision})
+        db.Product.findAll({
+            include : [
+                {association : "images"}
+            ]
+        }).then(products =>{
+            console.log(products[0].images[0].name)
+            return res.render('products/index',{products})
+        })
     }
 }
 
