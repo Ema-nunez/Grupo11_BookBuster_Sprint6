@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head') %>
+  <body>
+    <%- include('../partials/header') %>
+    <main class="main-register">
+
+
+
+      <form class="form-register" action="/users/register"  method= "POST" enctype="multipart/form-data">
+        <h2>Registro</h2>
+        <div class="infouser">
+          <div class="formulario">
+            <!-- <label for="name">Nombre</label> -->
+            <input type="text" name="name" 
+            value="<%= locals.oldData ? oldData.name : null%>" placeholder="Nombre">
+            <% if (locals.errors && errors.name) { %>
+              <div class="mensajesError">
+                  <%= errors.name.msg %> 
+              </div>
+            <% } %>
+            <!-- <label for="email">E-mail</label> -->
+            <input type="email" name="email" value="<%= locals.oldData ? oldData.email : null%> " placeholder="E-mail"/>
+            <% if (locals.errors && errors.email) { %>
+              <div class="mensajesError">
+                  <%= errors.email.msg %> 
+              </div>
+            <% } %>
+
+            <!-- <label for="password">Contraseña</label> -->
+            <input type="password" name="password" placeholder="Contraseña"/>
+            <% if (locals.errors && errors.password) { %>
+              <div class="mensajesError">
+                  <%= errors.password.msg %> 
+              </div>
+            <% } %>
+
+          </div>
+
+          <div class="formulario">
+            <!-- <label for="lastName">Apellido (opcional)</label> -->
+            <input type="text" name="lastName" value ="<%= locals.oldData ? oldData.lastName : null %>" placeholder="Apellido"/>
+
+
+            <!-- <label for="telefono">Telefono/Celular</label> -->
+            <input type="number" name="telefono" value ="<%= locals.oldData ? oldData.telefono : null %> " placeholder="Telefono/Celular"/>
+            <% if (locals.errors && errors.telefono) { %>
+              <div class="mensajesError">
+                  <%= errors.telefono.msg %> 
+              </div>
+            <% } %>
+            <!-- <label for="confirmarcontra" class="cc">Confirmar Contraseña</label> -->
+            <input type="password" name="confirmarPassword" placeholder="Confirmar Contraseña" />
+          </div>
+        </div>
+        <br>
+
+        <div class="compo3">
+          <label for="">Categoria</label>
+          <select name="persona">
+            <option value="">Seleccione una opcion</option>
+            <% let pers = ["usuario", "administrador"] %> 
+            <% for (const res of pers ) {%> 
+              <option value="<%= res %> "
+                <%= locals.oldData && (res === oldData.persona) ? 'selected' : null %> 
+                ><%= res %> </option>
+              <% } %> ">
+          </select>
+          <% if (locals.errors && errors.persona) { %>
+            <div class="mensajesError">
+                <%= errors.persona.msg %> 
+            </div>
+          <% } %>
+        </div>
+        <br>
+        <div>
+          <label for="">Subir Imagen</label>
+          <input type="file" name="image">
+          <% if (locals.errors && errors.image) { %>
+            <div class="mensajesError">
+              <%= errors.image.msg %>
+            </div>
+          <% } %>
+        </div>
+        <input type="submit" value="Registrarme" style="cursor: pointer;">
+        
+      </form>
+    </main>
+
+    <%- include('../partials/footer') %>
+  </body>
+</html>

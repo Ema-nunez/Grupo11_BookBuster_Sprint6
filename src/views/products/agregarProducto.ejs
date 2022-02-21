@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head')  %> 
+<body>
+    <%- include('../partials/header')  %> 
+
+    <main class="agregar-container">
+        <form action="/products/agregarProducto" enctype="multipart/form-data" method="POST" class="formAdd">
+            <h2>Agregar Producto</h2>
+            <p>Titulo del producto</p>
+            <input type="text" name="nombre" placeholder="Nombre del libro, manga o comic">
+            <p>Categoria</p>
+            <select name="Categoria">
+                <option value="Manga">Manga</option>
+                <option value="Comic">Comic</option>
+                <option value="Libro">Libro</option>
+            </select>
+            <p>Autor</p>
+            <input type="text" name="autor">
+            
+            <p>Precio</p>
+            <input type="number" name="precio" placeholder="$000000">
+
+            <p>Portada</p>
+            <input type="file" name="portada" accept=".png, .jpeg, .jpg">
+
+            <p>Descripcion</p>
+            <textarea name="descripcion" id="" cols="30" rows="5"></textarea>
+
+            <p>Estado</p>
+            <select name="estado">
+                <option value="En Curso">En Curso</option>
+                <option value="Finalizado">Finalizado</option>
+            </select>
+
+            <div class="contenedor_botones">
+                <button class="boton">AGREGAR</button>
+            </div>
+
+        </form>
+    </main>
+
+
+    <%- include('../partials/footer')  %> 
+</body>
+</html>

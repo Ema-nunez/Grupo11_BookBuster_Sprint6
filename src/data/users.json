@@ -1,0 +1,83 @@
+[
+ {
+  "apellido": "fulguera",
+  "email": "arthurdensek@gmail.com",
+  "telefono": "01150420942",
+  "password": "123456789",
+  "genero": "on",
+  "categoria": "usuario ",
+  "confirmarPassword": "123456789",
+  "avatar": "imgProduct_1641729311255hola.jpg",
+  "id": 6
+ },
+ {
+  "nombre": "Emanuel",
+  "apellido": "Nuñez",
+  "email": "jhonatanchipana4@gmail.com",
+  "telefono": "0111522521229",
+  "password": "$2b$10$yWETbFrUWduiGOm1ZsL/quMcZVc5C22CZhpNW.JwBqEekDglIbYVO",
+  "genero": "on",
+  "categoria": "administrador ",
+  "confirmarPassword": "ema12345",
+  "avatar": "imgProduct_1641946185983hola.jpg",
+  "id": 7
+ },
+ {
+  "nombre": "Matias",
+  "apellido": "Aguirre",
+  "email": "matiasezeaguirre@gmail.com",
+  "telefono": "1122755441",
+  "password": "$2b$10$itRZwphSTmMCD2oaES0TqOUvYAWr/SaiE4Oen4uiJl/hE7HyHsxrC",
+  "genero": "on",
+  "categoria": "usuario ",
+  "confirmarPassword": "matiasaguirre",
+  "avatar": "imgProduct_1642023942285hola.jpg",
+  "id": 8
+ },
+ {
+  "nombre": "user",
+  "apellido": "",
+  "email": "user@gmail.com",
+  "telefono": "423423423442",
+  "password": "$2b$10$oSnFC9D0PlblOkZoIv16L.VJbirjY3X6106X9PJ7lw8pXk1RJxS1e",
+  "genero": "on",
+  "categoria": "usuario ",
+  "confirmarPassword": "user12345",
+  "avatar": "imgProduct_1642119563719hola.jpg",
+  "id": 9
+ },
+ {
+  "nombre": "Emanuel",
+  "apellido": "",
+  "email": "ema@gmail.com",
+  "telefono": "1231231",
+  "password": "$2b$10$WhFR4V8aTGa4xTx7UJovYOVV/Hs6Ce0o4afzZ0UcT4/WmDYV6FtBK",
+  "categoria": "administrador ",
+  "confirmarPassword": "ema12345",
+  "avatar": "imgProduct_1642300679348hola.png",
+  "id": 10
+ },
+ {
+  "nombre": "Natalia Moreno",
+  "apellido": "Moreno",
+  "email": "nataliacam885@gmail.com",
+  "telefono": "01141874162",
+  "password": "$2b$10$eYI5p82O2qt1WzSWoAhGf.gCEBCgkansuvIsKcZSMdLh6KSMfROd6",
+  "genero": "on",
+  "categoria": "administrador ",
+  "confirmarPassword": "12345678",
+  "avatar": "imgProduct_1642463438373hola.jpg",
+  "id": 11
+ },
+ {
+  "nombre": "test",
+  "apellido": "",
+  "email": "test@gmail.com",
+  "telefono": "213123123",
+  "password": "$2b$10$MvuI1WR2o8EH4jCQ1935wOI0FabFp4IAEVIdGZogAbVCTl/8LCoGK",
+  "categoria": "usuario ",
+  "confirmarPassword": "test12345",
+  "avatar": "imgProduct_1642510091980hola.png",
+  "id": 12
+ }
+]

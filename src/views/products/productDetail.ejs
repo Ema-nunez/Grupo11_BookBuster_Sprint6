@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+    <%- include('../partials/head') %>
+    <body class="body-login">
+    <%- include('../partials/header') %>
+
+    <!-- <div class="historial-menu">
+        <ul class="breadcrumb">
+            <li><a href="index.html"></a>Home</li>
+            <li><a href="#"></a>Manga</li>
+            <li><a href="#"></a>Spy x Family serie</li>
+            <li id="principal"><a href="productDetail.html"></a>Spy x Family 01</li>
+        </ul>
+    </div> -->
+    <br><br>
+    <section class="detallesDelProd">
+        <div class="spyFma">
+            <img src="/images/products/<%= productDetail.img %> " alt="Spy x Family N°1">
+        </div>
+        <div class="detalle-prod">
+            <div class="titulo">
+                <h1><%= productDetail.nombre %> </h1>
+                <p><%= productDetail.autor  %> </p>
+                <p>$<%= productDetail.precio %> </p>
+            </div>
+        
+        
+        <div class="estado">
+            <h4 data-text="Estado: <%= productDetail.estado %> ...">Estado: <%= productDetail.estado %> ...</h4>
+            <ul>
+            <p>Genero:</p>
+            <li><%= productDetail.categoria %> </li>
+            </ul>
+        </div>
+
+        <div class="agregarCarrito">
+            <input type="submit" class="btn2" value="Agregar carrito">
+            <i class="fas fa-shopping-cart"></i>
+        </div>
+        <% if (locals.userLoged) { %>
+            <% if (locals.userLoged.categoria == "administrador ") { %>
+                <div class="boton-delate">
+                    <a href="/products/edit/<%= productDetail.id %> " class="action-button-edit">EDITAR PRODUCTO</a>
+                            <form action="/products/delete/<%= productDetail.id %>" method="POST" style="display: inline-flex">
+                                <button type="submit" class="action-button-delete">ELIMINAR</button>
+                            </form>
+                    </div>
+            <% }else{ %>
+                <%= locals.userLoged.categoria %> 
+            <% } %>
+        <% } %>
+        
+
+        
+
+
+        <h3>ENVÍO GRATIS:</h3>
+
+        <h4> <i class="fas fa-share-alt"></i> COMPARTIR EN: </h4>
+
+        <section class="redes">
+        <div class="wrapper">
+            <div class="botton">
+                <div class="icon"><i class="fab fa-whatsapp"></i></div>
+                <span>Whatsapp</span>
+            </div>
+            <div class="botton">
+                <div class="icon"><i class="fab fa-instagram" _mstvisible="2"></i></i></div>
+                <span>Instagram</span>
+            </div>
+            <div class="botton">
+                <div class="icon"><i class="fab fa-facebook"></i></i></div>
+                <span>Facebook</span>
+            </div>
+            <div class="botton">
+                <div class="icon"><i class="fab fa-twitter"></i></div>
+                <span>Twitter</span>
+            </div>
+        </div>
+    </section>
+
+        <article>
+        <p><%= productDetail.descripcion %> </p>
+        </article>
+        <span class="descrip-oculto">Es por eso que bajo la identidad del psiquiatra Loid Forger, Twilight reclutará a Yor Briar, una civil ostaniana que quiere tener bajo perfil y Anya, una huerfanita que sólo busca una familia cariñosa, para hacer las partes de esposa e hija respectivamente. Pero resulta que este par tampoco es nada normal, especialmente si tenemos en cuenta que Yor es una asesina profesional buscada por ambos bandos y Anya es una prófuga de un laboratorio secreto donde consiguió poderes telepáticos.
+            Es así como los tres sapos de otro pozo deberán cumplir con sus respectivos objetivos, por obligación o por deseo, mientras intentan llevar una vida cotidiana lo más normal que les permita sus situaciones.
+        </span>
+
+        <div class="Formato-libro">
+        <ul>
+            <li>Formato Tankobon</li>
+            <li>Tamaño: 13cm x 18cm</li>
+            <li>Sobrecubierta con tinta especial metalizado</li>
+            <li>Incluye paginas a color</li>
+        </ul>
+        </div>
+
+    </div>
+    </section>
+
+    <main class="index-img">
+        <h2>PRODUCTOS RELACIONADOS</h2>
+        <section class="Productos-relacionados contenedor-grid">
+            
+            <article>
+                <img src="/images/products/spyxfamily02.jpg" alt="spyxfamily02">
+                <div class="main-product">
+                    
+                    <h3>Spy x Family 02 <i class="fas fa-book"></i></h3>
+                    <p>$550</p>
+                    <form action="/views/home.html" method="POST">
+                    <input type="submit" class="btn3" value="Agregar al carrito">
+                    </form>
+                </div>
+            </article>
+
+            <article>
+                <img src="/images/products/spyxfamily03.jpg" alt="spyxfamily02">
+                <div class="main-product">
+                    <h3>Spy x Family 03 <i class="fas fa-book"></i></h3>
+                    <p>$550</p>
+                    <form action="/views/home.html" method="POST">
+                    <input type="submit" class="btn3" value="Agregar al carrito">
+                    </form>
+                </div>
+            </article>
+
+            <article>
+                <img src="/images/products/spyxfamily06.jpg" alt="spyxfamily02">
+                <div class="main-product">
+                    
+                    <h3>Spy x Family 06 <i class="fas fa-book"> </i></h3>
+                    <p>$550</p>
+                    <form action="/views/home.html" method="POST">
+                    <input type="submit" class="btn3" value="Agregar al carrito">
+                    </form>
+                </div>
+            </article>
+
+            <article>
+                <img src="/images/products/spyxfamily07.jpg" alt="spyxfamily02">
+                <div class="main-product">
+                    
+                    <h3>Spy x Family 07 <i class="fas fa-book"></i></h3>
+                    <p>$550</p>
+                    <form action="/views/home.html" method="POST">
+                    <input type="submit" class="btn3" value="Agregar al carrito">
+                    </form>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <%- include('../partials/footer') %>
+
+</body>
+</html>

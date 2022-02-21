@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('../partials/head') %>
+    <body>
+        <!--ENCABEZADO-->
+        <%- include('../partials/header') %>
+
+        <!--SLIDER-->
+        <div class="slider">
+            <ul>
+                <li>
+                    <img src="images/banner1.jpg">
+                </li>
+                <li>
+                    <img src="images/banner2.jpg">
+                </li>
+                <li>
+                    <img src="images/banner3.jpg">
+                </li>
+                <li>
+                    <img src="images/banner4.jpg">
+                </li>
+            </ul>
+        </div>
+
+        <!--SECCION DE PRODUCTOS-->
+        <main class="index-img">
+            
+            <h2>NOVEDADES</h2>
+            <section class="Productos-relacionados contenedor-grid">
+
+            <%- include('../partials/finalizados') %>
+
+            </section>
+
+            <h2>OFERTAS</h2>
+            <section class="Productos-relacionados contenedor-grid">
+                
+                <%-include('../partials/enEmision') %> 
+
+            </section>     
+            
+        </main>
+
+        <!--PIE DE PAGINA-->
+        <%- include('../partials/footer') %>
+        
+    </body>
+</html>

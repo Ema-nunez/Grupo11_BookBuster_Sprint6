@@ -1,0 +1,13 @@
+<% finalizados.forEach(element => { %>
+    <article>
+    <a href="/products/productDetail/<%= element.id %> "><img src="images/products/<%= element.img %> " alt="portada<%= element.nombre %> "></a>
+    <div class="main-product">
+        
+        <h3><%= element.nombre %> <i class="fas fa-book"></i></h3>
+        <p>$<%= element.precio %> </p>
+        <form action="/views/home.html" method="POST">
+        <input type="submit" class="btn3" value="Agregar al carrito">
+        </form>
+    </div>
+</article>
+<% }) %>

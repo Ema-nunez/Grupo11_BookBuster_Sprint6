@@ -1,0 +1,45 @@
+<header>
+    <section class="top-header">
+      <nav class="menu-oculto">
+        <ul class="opciones-menu">
+          <li><a href="#">Manga</a></li>
+          <li><a href="#">Comics</a></li>
+          <li><a href="#">Libros</a></li>
+          <li><a href="#">Merchandising</a></li>
+        </ul>
+        <% if (locals.isLogged) { %>
+            <p class="nameuser"><%= locals.userLoged.nombre %></p> 
+            <a class="session-out" href="/users/logout"><i class="fas fa-sign-out-alt"></i></a>
+        <% }else{ %>
+          <ul class="logeo-menu">
+            <li><a href="/users/register" class="estilos-register">Creá tu cuenta</a></li>
+            <li><a href="/users/login" class="estilos-login">Inicia sesión</a></li>
+        
+        </ul>
+          
+        <% } %>
+      </nav>
+      <div class="menu">
+        <i class="fa fa-bars burger"></i>
+      </div>
+      <div class="logo">
+        <a href="/"
+          ><img src="/images/BookBuster-Logo.svg" alt="Logo"
+        /></a>
+        
+      </div>
+      <div class="carrito">
+        <a href="/products/cart"><i class="fas fa-shopping-cart"></i></a>
+      </div>
+    </section>
+    <div class="barra-busqueda">
+      <input
+        type="text"
+        placeholder="Buscar Libros por palabra clave / titulo / autor / ISBN"
+        required
+      />
+      <div class="btn">
+        <i class="fab fa-sistrix"></i>
+      </div>
+    </div>
+  </header>

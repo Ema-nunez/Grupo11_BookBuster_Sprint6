@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+  <%- include('../partials/head') %>
+
+  <body class="body-login">
+    <%- include('../partials/header') %>
+    
+    <main class="main-login">
+      <div class="login-container">
+        <div class="login-info-container">
+          <h1 class="titulo">Iniciar Sesion</h1>
+          <div class="social-login">
+            <div class="social-login-element">
+              <img src="/images/google.svg" alt="google-image" />
+              <p>Google</p>
+            </div>
+            <div class="social-login-element">
+              <img src="/images/facebook.svg" alt="facebook-image" />
+              <p>Facebook</p>
+            </div>
+          </div>
+
+          <p>or</p>
+          <form class="formulario" action="/users/login" method="POST">
+            <input type="text" placeholder="Usuario" name="email"/>
+            <% if (locals.errors && errors.email) { %>
+              <div> <%= errors.email.msg %> </div>
+            <% } %>
+            <input type="password" placeholder="Contraseña" name="password">
+            <div class="recordarme">
+              <input type="checkbox" name="recordarme">Recordarme
+            </div>
+            
+            <button type="submit">Unirse</button>
+            <p>No tienes una cuenta?</p>
+            <a href="/register">Crea Una</a>
+            <a href="#">¿Olvidaste tu contraseña?</a>
+          </form>
+        </div>
+        <img class="image-container" src="/images/login.svg" alt="login" />
+      </div>
+    </main>
+    <%- include('../partials/footer') %>
+  </body>
+</html>

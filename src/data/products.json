@@ -1,0 +1,202 @@
+[
+ {
+  "id": 1,
+  "autor": "Gege Akutami",
+  "nombre": "Jujutsu kaisen 01",
+  "categoria": "Shonen",
+  "precio": 575,
+  "descripcion": "Yuji Itadori es un joven con habilidades físicas excepcionales que se une al club de ocultismo de la escuela porque le permite salir temprano y visitar a su abuelo en el hospital. Este, antes de morir, le pide que use su fuerza para ayudar a las personas. Ahí se aparece un estudiante de hechicero, Fushiguro, y le pide a Yuji el objeto maldito que encontró. Él le dice que sus compañeros del club van a abrirlo en la escuela, y ambos corren a rescatarlos. Al llegar, están rodeados de maldiciones (monstruos), y para salvar a sus compañeros, Yuji se traga el objeto maldito y se convierte en Sukuna.",
+  "estado": "En Curso",
+  "img": "jujutsu_kaisen.jpg"
+ },
+ {
+  "id": 5,
+  "autor": "Atsushi Ōkubo   ",
+  "nombre": "Fire Force ",
+  "categoria": "",
+  "precio": "600  ",
+  "descripcion": "",
+  "estado": "En Curso",
+  "img": "fireforce.jpg"
+ },
+ {
+  "id": 6,
+  "autor": "Atsushi Ōkubo  ",
+  "nombre": "Soul Eater 01  ",
+  "categoria": "",
+  "precio": "100",
+  "descripcion": "",
+  "estado": "En Curso",
+  "img": "Soul_Eater.jpg"
+ },
+ {
+  "id": 7,
+  "autor": "nombre  ",
+  "nombre": "The Ring 01  ",
+  "categoria": "",
+  "precio": "1000",
+  "descripcion": "",
+  "estado": "",
+  "img": "ring.jpg"
+ },
+ {
+  "id": 8,
+  "autor": "Hideo kOJIMA ",
+  "nombre": "Metal Gear Solid ",
+  "categoria": "",
+  "precio": "600 ",
+  "descripcion": "",
+  "estado": "",
+  "img": "productoOferta1.jpg"
+ },
+ {
+  "id": 9,
+  "autor": "Alan More  ",
+  "nombre": "Justice League  ",
+  "categoria": "",
+  "precio": "500 ",
+  "descripcion": "",
+  "estado": "",
+  "img": "productoOferta4.jpg"
+ },
+ {
+  "id": 10,
+  "autor": "Kishimoto   ",
+  "nombre": "Naruto   ",
+  "categoria": "Manga",
+  "precio": "655",
+  "descripcion": "",
+  "estado": "Finalizado",
+  "img": "imgProduct_1640253435148hola.jpg"
+ },
+ {
+  "id": 11,
+  "autor": "  ",
+  "nombre": "Tokyo Ghoul  ",
+  "precio": "500  ",
+  "descripcion": "",
+  "estado": "Finalizado",
+  "img": "imgProduct_1640253506350hola.jpg"
+ },
+ {
+  "id": 12,
+  "autor": "Kishimoto   ",
+  "nombre": "Boku no hero   ",
+  "categoria": "Manga",
+  "precio": "650 ",
+  "descripcion": "",
+  "estado": "Finalizado",
+  "img": "imgProduct_1640253600574hola.jpg"
+ },
+ {
+  "autor": "Kishimoto",
+  "nombre": "Tokyo Revengers",
+  "precio": "700",
+  "descripcion": "",
+  "estado": "Finalizado",
+  "img": "imgProduct_1640253674592hola.jpg",
+  "id": 13
+ },
+ {
+  "autor": "Kishimoto",
+  "nombre": "Gintama",
+  "precio": "300",
+  "descripcion": "",
+  "estado": "En Curso",
+  "img": "imgProduct_1640253752394hola.jpg",
+  "id": 14
+ },
+ {
+  "id": 15,
+  "autor": "Stan Lee       ",
+  "nombre": "Spiderman       ",
+  "categoria": "Comic",
+  "precio": "950     ",
+  "descripcion": "",
+  "estado": "Finalizado",
+  "img": "imgProduct_1640254475272hola.jpg"
+ },
+ {
+  "autor": "Kishimoto",
+  "nombre": "Nagatoro",
+  "precio": "600",
+  "descripcion": "asdasdasd",
+  "estado": "En Curso",
+  "img": "imgProduct_1642123750244hola.png",
+  "id": 16
+ },
+ {
+  "id": 17,
+  "autor": "Kishimoto   ",
+  "nombre": " Evangelion  ",
+  "categoria": "Manga",
+  "precio": "500",
+  "descripcion": "",
+  "estado": "En Curso",
+  "img": "imgProduct_1642124488324hola.jpg"
+ },
+ {
+  "autor": "Ino Asano",
+  "nombre": "Oyasumi Pun Pun",
+  "precio": "800",
+  "descripcion": "",
+  "estado": "En Curso",
+  "img": "imgProduct_1642509006454hola.jpg",
+  "id": 18
+ },
+ {
+  "autor": "Eiichirō Oda",
+  "nombre": "One Piece",
+  "precio": "650",
+  "descripcion": "",
+  "estado": "Finalizado",
+  "img": "imgProduct_1642509515498hola.jpg",
+  "id": 19
+ },
+ {
+  "autor": "Haruichi Furudate",
+  "nombre": "Haikyuu!",
+  "precio": "500",
+  "descripcion": "",
+  "estado": "En Curso",
+  "img": "imgProduct_1642509574529hola.jpg",
+  "id": 20
+ },
+ {
+  "autor": "Tatsuki Fujimoto",
+  "nombre": "Chainsaw Man",
+  "precio": "700",
+  "descripcion": "",
+  "estado": "Finalizado",
+  "img": "imgProduct_1642509633612hola.png",
+  "id": 21
+ },
+ {
+  "autor": "Tadatoshi Fujimaki",
+  "nombre": "Kuroko no Basket",
+  "precio": "550",
+  "descripcion": "",
+  "estado": "Finalizado",
+  "img": "imgProduct_1642509770354hola.jpg",
+  "id": 22
+ },
+ {
+  "id": 23,
+  "autor": "Tsugumi Ōba ",
+  "nombre": "Death Note ",
+  "categoria": "Manga",
+  "precio": "550 ",
+  "descripcion": "",
+  "estado": "Finalizado",
+  "img": "imgProduct_1642551636710hola.jpg"
+ },
+ {
+  "autor": "asdas",
+  "nombre": "Dr. Stone",
+  "precio": "700",
+  "descripcion": "",
+  "estado": "Finalizado",
+  "img": "imgProduct_1642771687141hola.jpg",
+  "id": 24
+ }
+]

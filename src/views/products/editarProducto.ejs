@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head')  %> 
+<body>
+    <%- include('../partials/header')  %> 
+
+    <main class="agregar-container">
+
+        <form action="/products/edit/<%=productaux.id %>?_method=PUT" method="POST" class="formAdd">
+            <h2>Editar Producto  <b><%= productaux.nombre %></b></h2>
+
+            <p>Titulo del producto</p>
+            <input type="text" name="nombre" value="<%= productaux.nombre %> ">
+            
+            <p>Precio</p>
+            <input type="text" name="precio"value="<%= productaux.precio %> ">
+
+            <p>Categoria</p>
+            <select name="categoria">
+                <option value="">Elegi</option>
+                <option value="Manga">Manga</option>
+                <option value="Comic">Comic</option>
+                <option value="Libro">Libro</option>
+            </select>
+
+            <p>Autor</p>
+            <input type="text" name="autor" value="<%= productaux.autor %> ">
+
+            <p>Descripcion</p>
+            <textarea name="descripcion" id="" cols="30" rows="5" placeholder="<%=productaux.descripcion %>"></textarea>
+            <p>Estado</p>
+            <select name="estado">
+                <option value="">Elegi</option>
+                <option value="En Curso">En Curso</option>
+                <option value="Finalizado">Finalizado</option>
+            </select>
+
+            <div class="botones-agregar">
+                <input type="submit" value="Actualizar">
+            </div>
+            
+
+        </form>
+    </main>
+
+    <%- include('../partials/footer')  %> 
+</body>
+</html>
