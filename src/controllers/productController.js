@@ -114,6 +114,7 @@ const productController = {
 
         return res.redirect('/')
     },
+    
     eliminar: function(req,res){
 
         let productId = req.params.id;

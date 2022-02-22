@@ -85,25 +85,34 @@ const userController = {
   },
 
   editUser: (req, res) => {
-    return res.render("users/edit");
+    let userId = req.params.id
+    db.User.findByPk(userId)
+    .then((user)=>{
+      return res.render("users/edit",{user});
+    })
+    
   },
+
   processEdit: (req, res) => {
     let userId = req.params.id;
-    db.User.update(
-      {
-        first_name: req.body.name,
-        last_name: req.body.lastName,
-        avatar: req.body.image,
-        email: req.body.email,
+    console.log(userId)
+    console.log(req.body)
+    db.User.update({
+      first_name: req.body.name,
+      last_name: req.body.lastName,
+      email: req.body.email,
+      roles_id : 1,
+      avatar: (req.file)?req.file.filename:req.session.userLoged.avatar
+    },
+    {
+      where: {
+        id: userId,
       },
-      {
-        where: {
-          id: userId,
-        },
-      }
-    );
-
-    return res.redirect("/profile");
+    }
+        )
+        return res.redirect("/users/profile");
+    
+    
   },
 };
 

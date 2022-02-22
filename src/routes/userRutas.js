@@ -24,9 +24,9 @@ router.post(
 //procesar profile de usuario
 router.get("/profile", userController.userProfile);
 //procesar edicion usuario
-router.get("/edit", userController.editUser);
+router.get("/edit/:id", userController.editUser);
 //update cambios del perfil
-router.put("/edit", userController.processEdit);
+router.put("/edit/:id",upload.single('image'), userController.processEdit);
 router.get("/logout", userController.logout);
 
 module.exports = router;

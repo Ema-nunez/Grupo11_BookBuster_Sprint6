@@ -20,11 +20,18 @@
           </div>
 
           <div class="user-data">
-            <p class="user-email"><%= locals.userLoged.email %></p>
-            <p class="user-type"><%= locals.userLoged.roles_id %></p>
+            <p class="user-email">Email: <%= locals.userLoged.email %></p>
+            <p class="user-type">
+              <% if (locals.userLoged.roles_id == 1) { %>
+                Rol : Adminisstrador
+              <% } else { %>
+
+                Rol : Usuario
+              <% }%>
+            </p>
           </div>
 
-          <a href="../users/edit" class="edit-user">Editar</a>
+          <a href="../users/edit/<%= locals.userLoged.id %> " class="edit-user">Editar Perfil</a>
         </div>
         <div class="image-container">
           <p>Productos adquiridos:</p>
@@ -33,6 +40,6 @@
     </main>
 
     <%- include('../partials/footer') %>
-    <p>hola</p>
+   
   </body>
 </html>
