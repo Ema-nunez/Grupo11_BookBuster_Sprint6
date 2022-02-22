@@ -1,4 +1,4 @@
-const modelController = require('../model/jsonDatabase');
+
 let db = require('../database/models');
 const { Op } = require("sequelize");
 const imageController = require('../controllers/imageController')
@@ -114,7 +114,7 @@ const productController = {
 
         return res.redirect('/')
     },
-    
+
     eliminar: function(req,res){
 
         let productId = req.params.id;
