@@ -27,7 +27,7 @@ const userController = {
         delete userToLogin.password;
         req.session.userLoged = userToLogin;
         if (req.body.recordarme ) {
-          console.log(req.body.recordarme)
+          
           res.cookie("userEmail", req.body.email, { maxAge: (1000 * 60 ) * 10 });
         }
         

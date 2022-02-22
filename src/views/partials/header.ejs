@@ -8,7 +8,7 @@
           <li><a href="#">Merchandising</a></li>
         </ul>
         <% if (locals.isLogged) { %>
-            <p class="nameuser"><%= locals.userLoged.name %></p> 
+            <p class="nameuser"><%= locals.userLoged.first_name %></p> 
             <a class="session-out" href="/users/logout"><i class="fas fa-sign-out-alt"></i></a>
         <% }else{ %>
           <ul class="logeo-menu">
