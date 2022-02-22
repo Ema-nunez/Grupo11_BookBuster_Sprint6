@@ -1,8 +1,8 @@
-# Grupo11_Bookbuster_Sprint5
+# Grupo11_Bookbuster_Sprint6
 
 Usuario administrador: 
-Email/usuario: jhonatanchipana4@gmail.com
-Password : ema12345
+Email/usuario: ema@gmail.com
+Password : ema123456
 
 Usuario comun: 
 Email/usuario: matiasezeaguirre@gmail.com
