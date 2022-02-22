@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+  <%- include('../partials/head') %>
+
+  <body class="body-login">
+    <%- include('../partials/header') %>
+
+    <main class="main-profile">
+      <div class="profile-container">
+        <div class="profile-info-container">
+          <h1 class="user-name"><%= locals.userLoged.first_name %></h1>
+          <h1 class="user-lastname"><%= locals.userLoged.last_name %></h1>
+          <div class="user-image">
+            <div class="user-avatar">
+              <img
+                src="/images/avatars/<%= locals.userLoged.avatar %>"
+                alt=""
+              />
+            </div>
+          </div>
+
+          <div class="user-data">
+            <p class="user-email"><%= locals.userLoged.email %></p>
+            <p class="user-type"><%= locals.userLoged.roles_id %></p>
+          </div>
+
+          <a href="../users/edit" class="edit-user">Editar</a>
+        </div>
+        <div class="image-container">
+          <p>Productos adquiridos:</p>
+        </div>
+      </div>
+    </main>
+
+    <%- include('../partials/footer') %>
+    <p>hola</p>
+  </body>
+</html>

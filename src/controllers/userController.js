@@ -2,8 +2,7 @@ const { localsName } = require("ejs");
 const { validationResult } = require("express-validator");
 const bcrypt = require("bcrypt");
 
-
-let db = require('../database/models');
+let db = require("../database/models");
 
 const userController = {
   login: (req, res) => {
@@ -12,45 +11,42 @@ const userController = {
 
   loginproceso: (req, res) => {
     db.User.findOne({
-      where : {
-        email : req.body.email
-      }
-    }).then((userToLogin)=>{
+      where: {
+        email: req.body.email,
+      },
+    }).then((userToLogin) => {
       if (userToLogin) {
-      let passwordOk = bcrypt.compareSync(
-        req.body.password,
-        userToLogin.password
-      )
-      console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaa",passwordOk)
-      if (passwordOk) {
-        
-        delete userToLogin.password;
-        req.session.userLoged = userToLogin;
-        if (req.body.recordarme ) {
-          
-          res.cookie("userEmail", req.body.email, { maxAge: (1000 * 60 ) * 10 });
-        }
-        
-        return res.redirect("/");
-        
-      }
+        let passwordOk = bcrypt.compareSync(
+          req.body.password,
+          userToLogin.password
+        );
+        console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaa", passwordOk);
+        if (passwordOk) {
+          delete userToLogin.password;
+          req.session.userLoged = userToLogin;
+          if (req.body.recordarme) {
+            res.cookie("userEmail", req.body.email, { maxAge: 1000 * 60 * 10 });
+          }
 
+          return res.redirect("/");
+        }
+
+        return res.render("users/login", {
+          errors: {
+            email: {
+              msg: "Las credenciales son invalidas",
+            },
+          },
+        });
+      }
       return res.render("users/login", {
         errors: {
           email: {
-            msg: "Las credenciales son invalidas",
+            msg: "Este correo no esta registrado",
           },
         },
       });
-    }
-      return res.render("users/login", {
-            errors: {
-              email: {
-                msg: "Este correo no esta registrado",
-              },
-            },
-          });
-    })
+    });
   },
 
   logout: (req, res) => {
@@ -60,7 +56,6 @@ const userController = {
   },
 
   register: (req, res) => {
-    
     return res.render("users/register");
   },
   processRegister: (req, res) => {
@@ -75,15 +70,40 @@ const userController = {
     db.User.create({
       first_name: req.body.name,
       last_name: req.body.lastName,
-      email: req.body.email,      
-      password: bcrypt.hashSync(req.body.password, 10),    
-      roles_id : 2,
-      
+      email: req.body.email,
+      password: bcrypt.hashSync(req.body.password, 10),
+      roles_id: 2,
+
       avatar: req.file.filename,
-    }).then(()=>{
-      console.log("creado correctamente")
-      res.redirect('/')
-    })
+    }).then(() => {
+      console.log("creado correctamente");
+      res.redirect("/");
+    });
+  },
+  userProfile: (req, res) => {
+    return res.render("users/profile");
+  },
+
+  editUser: (req, res) => {
+    return res.render("users/edit");
+  },
+  processEdit: (req, res) => {
+    let userId = req.params.id;
+    db.User.update(
+      {
+        first_name: req.body.name,
+        last_name: req.body.lastName,
+        avatar: req.body.image,
+        email: req.body.email,
+      },
+      {
+        where: {
+          id: userId,
+        },
+      }
+    );
+
+    return res.redirect("/profile");
   },
 };
 
