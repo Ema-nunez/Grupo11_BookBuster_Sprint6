@@ -1,6 +1,7 @@
 const modelController = require('../model/jsonDatabase');
 let db = require('../database/models');
 const { Op } = require("sequelize");
+const imageController = require('../controllers/imageController')
 const productController = {
     cart : (req,res)=>{
         res.render('products/cart');
@@ -33,62 +34,108 @@ const productController = {
     },
 
     create : (req,res)=>{
-        res.render('products/agregarProducto');
+        let promEditorials = db.Editorial.findAll();
+        let promCategories = db.Category.findAll();
+        let promDetails = db.Detail.findAll();
+        let promSizes = db.Size.findAll();
+        let promStates = db.State.findAll();
+
+        Promise
+        .all([promCategories, promEditorials, promDetails, promSizes, promStates ])
+        .then(([allCategories, allEditorials, allDetails, allSizes, allStates])=>{
+            
+            // res.json(allCategories)
+            res.render('products/agregarProducto',{allCategories,allEditorials,allDetails,allSizes,allStates});
+        })
+        
     },
 
     store:(req,res)=>{
-        const newProduct={
-            autor:req.body.autor,
-            nombre:req.body.nombre,
-            categoria:req.body.categoria,
-            precio:req.body.precio,
-            descripcion:req.body.descripcion,
-            estado:req.body.estado,
-            img:req.file.filename
+        db.Product.create({
+            
+            name:req.body.nombre,
+            price:req.body.precio,
+            description:req.body.descripcion,
+            stock_min : req.body.stockMin,
+            stock_max : req.body.stockMax,
+            states_id:req.body.estado,
+            categories_id:req.body.categoria,
+            sizes_id : req.body.formato,
+            details_id : req.body.detail,
+            editorials_id : req.body.editorial,
 
-        }
-        productModel.create(newProduct)
-        console.log('cree un nuevo producto')
-        res.redirect('/')
+        })
+        .then((aux)=>{
+            let image = req.file.filename
+            
+            imageController.create(aux.id,image)
+            console.log('cree un nuevo producto')
+            res.redirect('/')
+        })
+        
     },
     
     edit : (req,res)=>{
-        let productaux=productModel.find(req.params.id)
-        res.render('products/editarProducto',{productaux});
+        let productId = req.params.id;
+        let promProducts = db.Product.findByPk(productId,{
+            include : ['category','state','detail','editorial','size']
+        }) 
+
+        let promEditorials = db.Editorial.findAll();
+        let promCategories = db.Category.findAll();
+        let promDetails = db.Detail.findAll();
+        let promSizes = db.Size.findAll();
+        let promStates = db.State.findAll();
+
+        Promise.all([promProducts,promCategories, promEditorials, promDetails, promSizes, promStates])
+        .then(([product,allCategories, allEditorials, allDetails, allSizes, allStates])=>{
+            return res.render('products/editarProducto',{product,allCategories, allEditorials, allDetails, allSizes, allStates})
+        })
     },
     update:(req,res)=>{
-        let productToUpdate = productModel.find(req.params.id)
-        
-        let newProduct = {
 
-            id:productToUpdate.id,
-            autor:req.body.autor,
-            nombre:req.body.nombre,
-            categoria:req.body.categoria,
-            precio:req.body.precio,
-            descripcion:req.body.descripcion,
-            estado:req.body.estado,
-            img:productToUpdate.img
+        let productId = req.params.id;
+        db.Product.update({
+            name: req.body.nombre,
+            price: req.body.precio,            
+            description: req.body.descripcion,
+            stock_min : req.body.stockMin,
+            stock_max : req.body.stockMax,
+            states_id: req.body.estado,
+            categories_id: req.body.categoria,
+            sizes_id : req.body.formato,
+            details_id : req.body.detail,
+            editorials_id : req.body.editorial,
+        },{
+            where : {
+                id : productId
+            }
+        })
 
-        }
-        if (newProduct.estado == ""){
-            console.log(productToUpdate.estado)
-            newProduct.estado = productToUpdate.estado
-        }
-
-
-        if (newProduct.categoria == ""){
-            newProduct.categoria = productToUpdate.categoria
-        }
-        productModel.update(newProduct)
-        res.redirect("/");
-        
-        
-
+        return res.redirect('/')
     },
     eliminar: function(req,res){
-        productModel.delete(req.params.id);
-        res.redirect("/");
+
+        let productId = req.params.id;
+
+        db.Product.findByPk(productId,{
+            include : ['images']
+        }).then(()=>{
+            db.Image.destroy({
+                where : {
+                    products_id : productId
+                }
+            }).then(()=>{
+                db.Product.destroy({
+                    where : {
+                        id : productId
+                    }
+                })
+                .then(()=>{
+                    return res.redirect('/')
+                })
+            })
+        })
     }
 }
 

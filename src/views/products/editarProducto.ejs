@@ -6,35 +6,63 @@
 
     <main class="agregar-container">
 
-        <form action="/products/edit/<%=productaux.id %>?_method=PUT" method="POST" class="formAdd">
-            <h2>Editar Producto  <b><%= productaux.nombre %></b></h2>
+        <form action="/products/edit/<%=product.id %>?_method=PUT" method="POST" class="formAdd">
+            <h2>Editar Producto  <b><%= product.name %></b></h2>
 
             <p>Titulo del producto</p>
-            <input type="text" name="nombre" value="<%= productaux.nombre %> ">
+            <input type="text" name="nombre" value="<%= product.name %> ">
             
             <p>Precio</p>
-            <input type="text" name="precio"value="<%= productaux.precio %> ">
+            <input type="text" name="precio"value="<%= product.price %> ">
+
+            <p>Descripcion</p>
+            <textarea name="descripcion" id="" cols="30" rows="5" ><%=product.description %></textarea>
+
+            <p>Stock Minimo</p>
+            <input type="text" name="stockMin" value="<%= product.stock_min %> ">
+
+            <p>Stock Maximo</p>
+            <input type="text" name="stockMax" value="<%= product.stock_max %> ">
 
             <p>Categoria</p>
             <select name="categoria">
-                <option value="">Elegi</option>
-                <option value="Manga">Manga</option>
-                <option value="Comic">Comic</option>
-                <option value="Libro">Libro</option>
-            </select>
-
-            <p>Autor</p>
-            <input type="text" name="autor" value="<%= productaux.autor %> ">
-
-            <p>Descripcion</p>
-            <textarea name="descripcion" id="" cols="30" rows="5" placeholder="<%=productaux.descripcion %>"></textarea>
+                <option value="0" disabled>- Seleccione una categoria - </option>
+                    <% allCategories.forEach(category => { %>
+                    <option value="<%= category.id %>"<% if (product.categories_id == category.id) { %> <%= 'selected' %><% }; %>><%= category.name %></option>
+                    <% }); %>
+            </select>            
+        
             <p>Estado</p>
             <select name="estado">
-                <option value="">Elegi</option>
-                <option value="En Curso">En Curso</option>
-                <option value="Finalizado">Finalizado</option>
+                <option value="0" disabled>- Seleccione un estado - </option>
+                <% allStates.forEach(state => { %>
+                <option value="<%= state.id %>"<% if (product.states_id == state.id) { %> <%= 'selected' %><% }; %>><%= state.type %></option>
+                <% }); %>
             </select>
 
+            <p>Editorial</p>
+            <select name="editorial">
+                <option value="0" disabled>- Seleccione una editorial - </option>
+                <% allEditorials.forEach(editorial => { %>
+                <option value="<%= editorial.id %>"<% if (product.editorials_id == editorial.id) { %> <%= 'selected' %><% }; %>><%= editorial.name %></option>
+                <% }); %>
+            </select>
+
+            <p>Formato</p>
+            <select name="formato">
+                <option value="0" disabled>- Seleccione un formato - </option>
+                <% allSizes.forEach(size => { %>
+                <option value="<%= size.id %>"<% if (product.sizes_id == size.id) { %> <%= 'selected' %><% }; %>><%= size.format %></option>
+                <% }); %>
+            </select>
+
+            <p>Detalles</p>
+            <select name="detail">
+                <option value="0" disabled>- Seleccione un detalle - </option>
+                <% allDetails.forEach(detail => { %>
+                <option value="<%= detail.id %>"<% if (product.details_id == detail.id) { %> <%= 'selected' %><% }; %>><%= detail.type %></option>
+                <% }); %>
+            </select>
             <div class="botones-agregar">
                 <input type="submit" value="Actualizar">
             </div>
