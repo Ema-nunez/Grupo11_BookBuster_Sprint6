@@ -15,21 +15,24 @@
     <br><br>
     <section class="detallesDelProd">
         <div class="spyFma">
-            <img src="/images/products/<%= productDetail.img %> " alt="Spy x Family N°1">
+            <% for( let i = 0; i < product.images.length; i++ ) { %>
+                <img src="/images/products/<%= product.images[i].name%> " alt="<%= product.name %> ">
+            <% } %>
+           
         </div>
         <div class="detalle-prod">
             <div class="titulo">
-                <h1><%= productDetail.nombre %> </h1>
-                <p><%= productDetail.autor  %> </p>
-                <p>$<%= productDetail.precio %> </p>
+                <h1><%= product.name %> </h1>
+                <p><%=   %> </p>
+                <p>$<%= product.price %> </p>
             </div>
         
         
         <div class="estado">
-            <h4 data-text="Estado: <%= productDetail.estado %> ...">Estado: <%= productDetail.estado %> ...</h4>
+            <h4 data-text="Estado: <%= product.state.type %> ...">Estado: <%= product.state.type %> ...</h4>
             <ul>
             <p>Genero:</p>
-            <li><%= productDetail.categoria %> </li>
+            <li> </li>
             </ul>
         </div>
 
@@ -38,15 +41,15 @@
             <i class="fas fa-shopping-cart"></i>
         </div>
         <% if (locals.userLoged) { %>
-            <% if (locals.userLoged.categoria == "administrador ") { %>
+            <% if (locals.userLoged.roles_id ==  1) { %>
                 <div class="boton-delate">
-                    <a href="/products/edit/<%= productDetail.id %> " class="action-button-edit">EDITAR PRODUCTO</a>
-                            <form action="/products/delete/<%= productDetail.id %>" method="POST" style="display: inline-flex">
+                    <a href="/products/edit/<%= product.id %> " class="action-button-edit">EDITAR PRODUCTO</a>
+                            <form action="/products/delete/<%= product.id %>" method="POST" style="display: inline-flex">
                                 <button type="submit" class="action-button-delete">ELIMINAR</button>
                             </form>
                     </div>
             <% }else{ %>
-                <%= locals.userLoged.categoria %> 
+                
             <% } %>
         <% } %>
         
@@ -80,7 +83,7 @@
     </section>
 
         <article>
-        <p><%= productDetail.descripcion %> </p>
+        
         </article>
         <span class="descrip-oculto">Es por eso que bajo la identidad del psiquiatra Loid Forger, Twilight reclutará a Yor Briar, una civil ostaniana que quiere tener bajo perfil y Anya, una huerfanita que sólo busca una familia cariñosa, para hacer las partes de esposa e hija respectivamente. Pero resulta que este par tampoco es nada normal, especialmente si tenemos en cuenta que Yor es una asesina profesional buscada por ambos bandos y Anya es una prófuga de un laboratorio secreto donde consiguió poderes telepáticos.
             Es así como los tres sapos de otro pozo deberán cumplir con sus respectivos objetivos, por obligación o por deseo, mientras intentan llevar una vida cotidiana lo más normal que les permita sus situaciones.
@@ -88,9 +91,9 @@
 
         <div class="Formato-libro">
         <ul>
-            <li>Formato Tankobon</li>
+            <li>Formato: <%= product.size.format %> </li>
             <li>Tamaño: 13cm x 18cm</li>
-            <li>Sobrecubierta con tinta especial metalizado</li>
+            <li><%= product.detail.type %> </li>
             <li>Incluye paginas a color</li>
         </ul>
         </div>

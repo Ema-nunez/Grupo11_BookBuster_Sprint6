@@ -8,7 +8,7 @@
           <li><a href="#">Merchandising</a></li>
         </ul>
         <% if (locals.isLogged) { %>
-            <p class="nameuser"><%= locals.userLoged.nombre %></p> 
+            <p class="nameuser"><%= locals.userLoged.name %></p> 
             <a class="session-out" href="/users/logout"><i class="fas fa-sign-out-alt"></i></a>
         <% }else{ %>
           <ul class="logeo-menu">
@@ -33,13 +33,16 @@
       </div>
     </section>
     <div class="barra-busqueda">
+      <form action="/products/search" method="get">
       <input
         type="text"
         placeholder="Buscar Libros por palabra clave / titulo / autor / ISBN"
+        name = "searchbar"
         required
-      />
-      <div class="btn">
+      >
+      <button class="btn" type="submit">
         <i class="fab fa-sistrix"></i>
-      </div>
+      </button>
+    </form>
     </div>
   </header>

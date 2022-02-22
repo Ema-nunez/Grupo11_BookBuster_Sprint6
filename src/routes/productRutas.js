@@ -9,6 +9,8 @@ router.get('/cart', productController.cart);
 
 router.get('/detailProduct/:id', productController.detail);
 
+router.get('/search', productController.search);
+
 router.get('/createProduct', jerarquiaMiddleware, productController.create);
 
 router.post('/storeProduct', upload.single("portada"), productController.store);

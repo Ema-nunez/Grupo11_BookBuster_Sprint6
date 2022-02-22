@@ -1,9 +1,9 @@
 const { localsName } = require("ejs");
 const { validationResult } = require("express-validator");
 const bcrypt = require("bcrypt");
-const modelController = require("../model/jsonDatabase");
-const jsonDB = require("../model/jsonDatabase");
-const usersModel = jsonDB("users");
+
+
+let db = require('../database/models');
 
 const userController = {
   login: (req, res) => {
@@ -11,22 +11,28 @@ const userController = {
   },
 
   loginproceso: (req, res) => {
-    let userToLogin = usersModel.findByField("email", req.body.email);
-
-    if (userToLogin) {
+    db.User.findOne({
+      where : {
+        email : req.body.email
+      }
+    }).then((userToLogin)=>{
+      if (userToLogin) {
       let passwordOk = bcrypt.compareSync(
         req.body.password,
         userToLogin.password
-      );
+      )
+      console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaa",passwordOk)
       if (passwordOk) {
+        
         delete userToLogin.password;
-        delete userToLogin.confirmarPassword;
         req.session.userLoged = userToLogin;
-        if (req.body.recordarme) {
+        if (req.body.recordarme ) {
+          console.log(req.body.recordarme)
           res.cookie("userEmail", req.body.email, { maxAge: (1000 * 60 ) * 10 });
         }
-
+        
         return res.redirect("/");
+        
       }
 
       return res.render("users/login", {
@@ -37,14 +43,14 @@ const userController = {
         },
       });
     }
-
-    return res.render("users/login", {
-      errors: {
-        email: {
-          msg: "Este correo no esta registrado",
-        },
-      },
-    });
+      return res.render("users/login", {
+            errors: {
+              email: {
+                msg: "Este correo no esta registrado",
+              },
+            },
+          });
+    })
   },
 
   logout: (req, res) => {
@@ -54,6 +60,7 @@ const userController = {
   },
 
   register: (req, res) => {
+    
     return res.render("users/register");
   },
   processRegister: (req, res) => {
@@ -65,19 +72,18 @@ const userController = {
         oldData: req.body,
       });
     }
-    const newUsuario = {
-      nombre: req.body.name,
-      apellido: req.body.lastName,
-      email: req.body.email,
-      telefono: req.body.telefono,
+    db.User.create({
+      first_name: req.body.name,
+      last_name: req.body.lastName,
+      email: req.body.email,      
       password: bcrypt.hashSync(req.body.password, 10),    
-      categoria: req.body.persona,
-      confirmarPassword: req.body.confirmarPassword,
+      roles_id : 2,
+      
       avatar: req.file.filename,
-    };
-    newUsuario.categoria.trim();
-    usersModel.create(newUsuario);
-    res.redirect("/");
+    }).then(()=>{
+      console.log("creado correctamente")
+      res.redirect('/')
+    })
   },
 };
 

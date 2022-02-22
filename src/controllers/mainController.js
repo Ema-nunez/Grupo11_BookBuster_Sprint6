@@ -6,8 +6,7 @@ const mainController = {
             include : [
                 {association : "images"}
             ]
-        }).then(products =>{
-            console.log(products[0].images[0].name)
+        }).then(products =>{           
             return res.render('products/index',{products})
         })
     }

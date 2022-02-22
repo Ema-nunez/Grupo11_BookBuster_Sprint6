@@ -1,16 +1,35 @@
 const modelController = require('../model/jsonDatabase');
-const jsonDB = require('../model/jsonDatabase');
-const productModel = jsonDB('products')
-
+let db = require('../database/models');
+const { Op } = require("sequelize");
 const productController = {
     cart : (req,res)=>{
         res.render('products/cart');
     },
 
     detail : (req,res)=>{
-        const productDetail = productModel.find(req.params.id)
-    
-        res.render('products/productDetail', {productDetail});
+
+        let productId = req.params.id;
+        db.Product.findByPk(productId,{
+            include : ['images','category','state','detail','size']
+        })
+        .then(product => {
+            
+           return res.render('products/productDetail',{product})
+        })
+    },
+
+    search : (req,res)=>{
+        let search = req.query.searchbar;
+        
+        db.Product.findAll({
+            where: {
+                name: { [Op.like] : '%' + search + '%' }
+            },
+            include : ['images' ]
+        }).then(products => {
+            res.render('products/index',{products})
+        })
+
     },
 
     create : (req,res)=>{
