@@ -92,6 +92,7 @@ const productController = {
             return res.render('products/editarProducto',{product,allCategories, allEditorials, allDetails, allSizes, allStates})
         })
     },
+
     update:(req,res)=>{
 
         let productId = req.params.id;
@@ -110,9 +111,11 @@ const productController = {
             where : {
                 id : productId
             }
+        }).then(()=>{
+            return res.redirect(`/products/detailProduct/${req.params.id}`)
         })
 
-        return res.redirect('/')
+        
     },
 
     eliminar: function(req,res){
