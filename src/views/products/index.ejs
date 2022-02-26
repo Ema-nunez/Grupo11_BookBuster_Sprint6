@@ -25,7 +25,11 @@
 
         <!--SECCION DE PRODUCTOS-->
         <main class="index-img">
-            <a href="/products/createProduct"><button>Agregar Producto</button></a>
+            <% if (locals.userLoged) { %>
+                <% if (locals.userLoged.roles_id ==  1) { %>
+                    <a href="/products/createProduct"><button class="addprodbtn">Agregar Producto</button></a>
+                <% } %>
+            <% } %>
             <h2>NOVEDADES</h2>
             <section class="Productos-relacionados contenedor-grid">
 
@@ -41,8 +45,28 @@
                         
                         <h3><%= products[i].name%> <i class="fas fa-book"></i></h3>
                         <p>$<%= products[i].price %> </p>
-                        <form action="/views/home.html" method="POST">
-                        <input type="submit" class="btn3" value="Agregar al carrito">
+                        <% if (locals.userLoged) { %>
+                            <% if (locals.userLoged.roles_id ==  1) { %>
+                                
+                            <% } %>
+                        <% }else{ %>
+                                <div class="agregarCarrito">
+                                    <input type="submit" class="btn2" value="Agregar carrito">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </div>
+                            <% } %>
+                            <% if (locals.userLoged) { %>
+                                <% if (locals.userLoged.roles_id ==  1) { %>
+                                    <div class="boton-delate">
+                                        <a href="/products/edit/<%= products[i].id %> " class="action-button-edit">EDITAR PRODUCTO</a>
+                                                <form action="/products/delete/<%= products[i].id %>" method="POST" style="display: inline-flex">
+                                                    <button type="submit" class="action-button-delete">ELIMINAR</button>
+                                                </form>
+                                        </div>
+                                <% }else{ %>
+                                    
+                                <% } %>
+                            <% } %>
                         </form>
                     </div>
                 </article>

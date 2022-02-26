@@ -35,11 +35,16 @@
             <li> </li>
             </ul>
         </div>
-
-        <div class="agregarCarrito">
-            <input type="submit" class="btn2" value="Agregar carrito">
-            <i class="fas fa-shopping-cart"></i>
-        </div>
+        <% if (locals.userLoged) { %>
+            <% if (locals.userLoged.roles_id ==  1) { %>
+                
+            <% } %>
+        <% }else{ %>
+                <div class="agregarCarrito">
+                    <input type="submit" class="btn2" value="Agregar carrito">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+            <% } %>
         <% if (locals.userLoged) { %>
             <% if (locals.userLoged.roles_id ==  1) { %>
                 <div class="boton-delate">
