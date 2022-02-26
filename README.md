@@ -1,15 +1,15 @@
 # Grupo11_Bookbuster_Sprint6
 
 Usuario administrador: 
-Email/usuario: ema@gmail.com
-Password : ema123456
+Email/usuario: admin@gmail.com
+Password : admin1234
 
 Usuario comun: 
-Email/usuario: matiasezeaguirre@gmail.com
-Password : matiasaguirre
+Email/usuario: usuario@gmail.com
+Password : usuario123
 
-En caso de por algun motivo los mails no funcionen, se pueden registrar y elegir el rol que se requiera (esto luego sera removido)
+En caso de por algun motivo los mails no funcionen, se pueden registrar(el rol por defecto siempre sera usuario)
 
 
 
-Herramienta para orginzar el trabajo: https://trello.com/b/BhqwBW3Y/proyecto
+Herramienta para orginzar el proyecto: https://trello.com/b/BhqwBW3Y/proyecto
