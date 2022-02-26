@@ -17,7 +17,7 @@ router.post('/storeProduct', upload.single("portada"), productController.store);
 
 router.get('/edit/:id', jerarquiaMiddleware ,productController.edit)
 
-router.put('/edit/:id', productController.update)
+router.put('/edit/:id',upload.single("image"), productController.update)
 
 router.post("/delete/:id", productController.eliminar)
 module.exports = router;

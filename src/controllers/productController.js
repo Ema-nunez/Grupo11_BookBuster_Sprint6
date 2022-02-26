@@ -78,7 +78,7 @@ const productController = {
     edit : (req,res)=>{
         let productId = req.params.id;
         let promProducts = db.Product.findByPk(productId,{
-            include : ['category','state','detail','editorial','size']
+            include : ['category','state','detail','editorial','size','images']
         }) 
 
         let promEditorials = db.Editorial.findAll();
@@ -96,26 +96,43 @@ const productController = {
     update:(req,res)=>{
 
         let productId = req.params.id;
-        db.Product.update({
-            name: req.body.nombre,
-            price: req.body.precio,            
-            description: req.body.descripcion,
-            stock_min : req.body.stockMin,
-            stock_max : req.body.stockMax,
-            states_id: req.body.estado,
-            categories_id: req.body.categoria,
-            sizes_id : req.body.formato,
-            details_id : req.body.detail,
-            editorials_id : req.body.editorial,
-        },{
+        let image = db.Image.findOne({
             where : {
-                id : productId
+                    products_id : productId
             }
         }).then(()=>{
-            return res.redirect(`/products/detailProduct/${req.params.id}`)
+
+            if(req.file == undefined){
+                imageController.edit(productId,image.name)
+            }else{
+                imageController.edit(productId,req.file.filename)
+            }
+
+            db.Product.update({
+                name: req.body.nombre,
+                price: req.body.precio,            
+                description: req.body.descripcion,
+                stock_min : req.body.stockMin,
+                stock_max : req.body.stockMax,
+                states_id: req.body.estado,
+                categories_id: req.body.categoria,
+                sizes_id : req.body.formato,
+                details_id : req.body.detail,
+                editorials_id : req.body.editorial,
+            },{
+                where : {
+                    id : productId
+                }
+            }).then(()=>{
+                return res.redirect(`/products/detailProduct/${req.params.id}`)
+            })
         })
 
+
+
         
+        
+ 
     },
 
     eliminar: function(req,res){

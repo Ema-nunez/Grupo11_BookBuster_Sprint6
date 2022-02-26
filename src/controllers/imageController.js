@@ -9,6 +9,17 @@ const imageController = {
         }).then(()=>{
             console.log("cargue las imagenes")
         })
+    },
+
+    edit : (id,image)=>{
+        db.Image.update({
+            name : image,
+            
+        },{
+            where : {
+                products_id : id
+            }
+        })
     }
 }
 

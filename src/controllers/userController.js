@@ -95,13 +95,10 @@ const userController = {
 
   processEdit: (req, res) => {
     let userId = req.params.id;
-    console.log(userId)
-    console.log(req.body)
     db.User.update({
       first_name: req.body.name,
       last_name: req.body.lastName,
       email: req.body.email,
-      roles_id : 1,
       avatar: (req.file)?req.file.filename:req.session.userLoged.avatar
     },
     {

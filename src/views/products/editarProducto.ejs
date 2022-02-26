@@ -6,7 +6,7 @@
 
     <main class="agregar-container">
 
-        <form action="/products/edit/<%=product.id %>?_method=PUT" method="POST" class="formAdd">
+        <form action="/products/edit/<%=product.id %>?_method=PUT" method="POST" class="formAdd" enctype="multipart/form-data">
             <h2>Editar Producto  <b><%= product.name %></b></h2>
 
             <p>Titulo del producto</p>
@@ -63,11 +63,16 @@
                 <option value="<%= detail.id %>"<% if (product.details_id == detail.id) { %> <%= 'selected' %><% }; %>><%= detail.type %></option>
                 <% }); %>
             </select>
+
+            <p>Imagen de portada</p>
+                
+            <input type="file" name="image">
+
             <div class="botones-agregar">
                 <input type="submit" value="Actualizar">
             </div>
             
-
+            
         </form>
     </main>
 
